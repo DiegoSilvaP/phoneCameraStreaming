@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" href="css/onsenui.css">
+    <link rel="stylesheet" href="css/onsen-css-components.min.css">
+    <script src="js/onsenui.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <title>Hello World</title>
+</head>
+
+<body onload="connect();">
+    <ons-navigator swipeable id="myNavigator" page="page1.html"></ons-navigator>
+    <template id="page1.html">
+        <ons-page>
+            <ons-toolbar style="background-color: #e7e7e7">
+                <div class="center">Video doc</div>
+                <div class="left"><img src="img/logo.png" alt="Onsen UI" style="height: 100%"></div>
+            </ons-toolbar>
+            <textarea id="txtDebug" name="txtDebug" style="width:100%; height: 90px;"></textarea>
+            <div id="iam"></div>
+            <div id="otherClients"></div>
+            <div class="row">
+                <div class="col-md-6">
+                    <video autoplay="autoplay" class="img-fluid d-block rounded" playsinline="playsinline" id="selfVideo"
+                        muted="true" volume="0"></video>
+                </div>
+                <div class="col-md-6">
+                    <video autoplay="autoplay" playsinline="playsinline" id="callerVideo" height="100%" width="100%"
+                        class="img-fluid d-block rounded"></video>
+                </div>
+            </div>
+        </ons-page>
+    </template>
+    <!-- <script type="text/javascript" src="cordova.js"></script> -->
+    <!-- <script type="text/javascript" src="js/index.js"></script> -->
+
+    <script src="js/socket.io.js"></script>
+    <script src="js/easyrtc.js"></script>
+    <script src="js/demo_audio_video_simple_hd.js"></script>
+    <script>
+        var p = navigator.mediaDevices.getUserMedia({
+            audio: true,
+            video: true
+        });
+
+        p.then(function (mediaStream) {
+            var video = document.querySelector('video');
+            video.src = window.URL.createObjectURL(mediaStream);
+            video.onloadedmetadata = function (e) {
+                // Do something with the video here.
+            };
+        });
+
+        p.catch(function (err) {
+            console.log(err.name);
+        }); // always check for errors at the end.
+    </script>
+
+</body>
+
+</html>

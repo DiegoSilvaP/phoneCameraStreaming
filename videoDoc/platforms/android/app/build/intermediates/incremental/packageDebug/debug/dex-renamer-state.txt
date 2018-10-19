@@ -1,0 +1,4 @@
+#Fri Oct 19 11:31:06 COT 2018
+base.0=C\:\\Users\\diego\\Desktop\\PhoneStreaming\\videoDoc\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+path.0=classes.dex
+renamed.0=classes.dex
